@@ -1,0 +1,50 @@
+from fastapi import FastAPI
+engine=None
+import yaml
+with open("secret.yaml","r") as file:
+    config=yaml.safe_load(file)
+
+def get_engine():
+    global engine
+    if engine is not None:
+        return engine
+    from sqlalchemy import create_engine
+    username=config["username"]
+    password=config["password"]
+    engine = create_engine(f"postgresql://{username}:{password}@localhost/database")
+    return engine
+import sqlalchemy
+app = FastAPI()
+from sqlalchemy import Table, MetaData, Column, Integer, String
+metadata=MetaData(get_engine())
+users=Table("users",
+            metadata,
+            Column("user_id",Integer,primary_key=True),
+            Column("username",String,nullable=False))
+metadata.create_all(bind=get_engine())
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+@app.get("/users")
+def get_users():
+    query="SELECT * FROM users"
+    usernames=[]
+    with get_engine().connect() as connection:
+        result=connection.execute(query)
+        for row in result:
+            usernames.append(row["username"])        
+    return usernames
+
+@app.post("/users")
+def register_user(username: str):
+    params={"username":username}
+    query=sqlalchemy.insert(users).values(**params)
+    print(str(query))
+    with get_engine().connect() as connection:
+        result=connection.execute(query)
+
+@app.on_event("startup")
+async def startup():
+    get_engine()
+    

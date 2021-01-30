@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    environment:
+      - POSTGRES_USER=${username}
+      - POSTGRES_PASSWORD=${password}
+      - POSTGRES_DB=database
+      - ALLOW_IP_RANGE=0.0.0.0/0
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
