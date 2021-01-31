@@ -1,10 +1,10 @@
 function SignUp(usernameID, passwordID, emailID) {
 		var formData = new FormData();
-		formData.append('username', document.getElementById(usernameID));
-		formData.append('password', document.getElementById(passwordID));
-		formData.append('email', document.getElementById(emailID));
+		formData.append('username', document.getElementById(usernameID).value);
+		formData.append('password', document.getElementById(passwordID).value);
+		formData.append('email', document.getElementById(emailID).value);
 		var endpoint = '/users';
-		
+		alert(document.getElementById(passwordID).value);
 		$.ajax({
 			type: 'POST',
 			url: endpoint,
