@@ -24,9 +24,7 @@ users=Table("users",
             metadata,
             Column("user_id",Integer,primary_key=True),
             Column("username",String,nullable=False),
-            Column("password_hash",String,nullable=False)
-            Column("skills",String,nullable=False))
-users.drop(get_engine(),checkfirst=True)
+            Column("password_hash",String,nullable=False))
 
 metadata.create_all(bind=get_engine())
 
