@@ -49,9 +49,9 @@ def get_users():
     return usernames
 
 @app.post("/users")
-def register_user(username: str, password: str):
+def register_user(username: str, password: str, email: str):
     _hash=get_hash(password)
-    params={"username":username,"password_hash":_hash}
+    params={"username":username,"password_hash":_hash,"email":email}
     query=sqlalchemy.insert(users).values(**params)
     print(str(query))
     with get_engine().connect() as connection:
