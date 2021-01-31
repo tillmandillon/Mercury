@@ -33,7 +33,7 @@ metadata.create_all(bind=get_engine())
 Mercury = Jinja2Templates(directory="frontend")
 
 @app.get("/")
-async def root():
+async def root(request: Request):
     return Mercury.TemplateResponse("index.html", {"request": request})
 
 @app.get("/users")
