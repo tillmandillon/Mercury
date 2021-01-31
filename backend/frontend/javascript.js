@@ -3,7 +3,7 @@ function SignUp(usernameID, passwordID, emailID) {
 		formData.append('username', document.getElementById(usernameID));
 		formData.append('password', document.getElementById(passwordID));
 		formData.append('email', document.getElementById(emailID));
-		var endpoint = '/add_user';
+		var endpoint = '/register_user';
 		
 		$.ajax({
 			type: 'POST',
