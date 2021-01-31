@@ -25,11 +25,7 @@ users=Table("users",
             Column("user_id",Integer,primary_key=True),
             Column("username",String,nullable=False),
             Column("password_hash",String,nullable=False)
-            Column("date_joined",String,nullable=False),
-            Column("skills",String,nullable=False),
-            Column("education_university",String),
-            Column("education_grad_year",Integer),
-            Column("education_grad_month",String))
+            Column("skills",String,nullable=False))
 users.drop(get_engine(),checkfirst=True)
 
 metadata.create_all(bind=get_engine())
