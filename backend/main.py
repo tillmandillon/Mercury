@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from users import get_hash, verify_password
+from fastapi.templating import Jinja2Templates
 engine=None
 import yaml
 with open("secret.yaml","r") as file:
@@ -24,13 +25,16 @@ users=Table("users",
             metadata,
             Column("user_id",Integer,primary_key=True),
             Column("username",String,nullable=False),
-            Column("password_hash",String,nullable=False))
+            Column("password_hash",String,nullable=False),
+            Column("email",String,nullable=False))
 
 metadata.create_all(bind=get_engine())
 
+Mercury = Jinja2Templates(directory="frontend")
+
 @app.get("/")
 async def root():
-    return {"message": "Connection successful."}
+    return Mercury.TemplateResponse("index.html", {"request": request})
 
 @app.get("/users")
 def get_users():
