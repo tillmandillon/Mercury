@@ -4,7 +4,6 @@ function register_user(usernameID, passwordID, emailID) {
 		formData.append('password', document.getElementById(passwordID).value);
 		formData.append('email', document.getElementById(emailID).value);
 		var endpoint = '/users';
-		alert(document.getElementById(passwordID).value);
 		$.ajax({
 			type: 'POST',
 			url: endpoint,
