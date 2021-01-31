@@ -1,6 +1,8 @@
 from fastapi import FastAPI, Request
 from users import get_hash, verify_password
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 engine=None
 import yaml
 with open("secret.yaml","r") as file:
@@ -31,7 +33,7 @@ users=Table("users",
 metadata.create_all(bind=get_engine())
 
 Mercury = Jinja2Templates(directory="frontend")
-
+app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 @app.get("/")
 async def root(request: Request):
     return Mercury.TemplateResponse("index.html", {"request": request})
