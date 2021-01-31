@@ -1,0 +1,226 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 2%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid white;
+  background-color: white;
+}
+
+#navbar_logo {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #666;
+}
+
+.navbar_content {
+	font-family: "Oxygen", sans-serif;
+	margin-left: 3%;
+	float: left;
+	display: flex;
+	align-items: center;
+}
+
+#navbar_logo {
+	margin-left: 10%;
+	margin-right: 3%;
+}
+
+#right_nav {
+	float: right;
+	margin-right: 3%;
+	display: flex;
+	align-items: center;
+}
+
+#navbar_sign_in {
+	background: white;
+	color: black;
+	border: none;
+	font-family: "Oxygen", sans-serif;
+}
+
+#navbar_sign_up a {
+	background: black;
+	border-radius: 10px;
+	color: white;
+	font-family: "Oxygen", sans-serif;
+}
+
+.get_started {
+	font-family: "Nunito", "Oxygen", sans-serif;
+	font-size: 35px;
+	padding-top: 15px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.title {
+	font-family: "Rubik", "Nunito", sans-serif;
+	font-size: 55px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.subtitle {
+	font-family: "Fira Sans", "Oxygen", sans-serif;
+	font-weight: normal;
+	font-size: 35px;
+	margin-top: 8px;
+	letter-spacing: 3px;
+}
+
+.bio {
+	font-family: "Oxygen", sans-serif;
+	font-size: 16px;
+	width: 80%;
+	letter-spacing: 2px;
+	padding-top: 30px;
+}
+
+#navbar_search {
+	float: right;
+}
+
+.left_content {
+	margin-left: 7%;
+	width: 40%;
+	float: left;
+	margin-top: 5%;
+}
+
+.right_content {
+	border: 1px solid white;
+	box-shadow: 5px 8px 18px #a3a3a3;
+	width: 30%;
+	float: right;
+	margin-right: 3%;
+	margin-top: 3%;
+	text-align: center;
+}
+
+input[type=text], input[type=email], input[type=password] {
+	width: 65%;
+	padding: 12px 20px;
+	margin-left: 15%;
+	margin-top: 5%;
+	box-sizing: border-box;
+	border: none;
+	border-bottom: 2px solid #d6d6d6;
+	outline-width: 0;
+	font-family: "Nunito", "Oxygen", sans-serif;
+	font-size: 18px;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+	border-bottom: 2px solid grey;
+}
+
+button {
+	margin-top: 15%;
+	text-align: center;
+	border-radius: 5px;
+	border: none;
+	background-color: #03a9f4;
+	color: white;
+	padding: 20px;
+	width: 75%;
+	font-family: "Oxygen", sans-serif;
+}
+
+.warning {
+	font-size: 15px;
+	color: grey;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 7%;
+	margin-bottom: 10%;
+}
+
+.content_container {
+	width: 98vw;
+	height: 85vh;
+	margin: 0 auto;
+}
+
+.partnership_container {
+	margin-top: 10%;
+	margin-left: 10%;
+	display: flex;
+	align-items: center;
+}
+
+.partnership_image {
+	float: left;
+	margin-right: 3%;
+	font-size: 45px;
+}
+
+.partnership_words {
+	float: right;
+}
+
+.sign_up_today {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: black;
+}
+
+.promoting_partnership {
+	font-family: "Oxygen", sans-serif;
+	line-height: 0;
+}
+
+.meet_new_people {
+	font-family: "Nunito", sans-serif;
+	font-size: 14px;
+}
+
+.sign_up_today {
+	font-family: "Nunito", sans-serif;
+	line-height: 0;
+	color: #03a9f4;
+}
+
+.nav_img {
+	width: 60px;
+	height: auto;
+	position: absolute;
+	top: 4%;
+}
+
+.sign_in_line {
+	position: fixed;
+	left: 75%;
+	top: 43%;
+	transform: translate(-50%, -50%);
+	width: 540px;
+	height: auto;
+	pointer-events: none;
+}
+
+.background_1 {
+	position: absolute;
+	width: 120px;
+	height: auto;
+	bottom: 0px;
+	left: 3%;
+	pointer-events: none;
+}
+
+.background_2 {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	bottom: 0px;
+	left: 45%;
+	pointer-events: none;
+}

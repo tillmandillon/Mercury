@@ -2,3 +2,5 @@ docker-compose
 pyyaml
 fastapi
 sqlalchemy
+uvicorn
+psycopg2-binary

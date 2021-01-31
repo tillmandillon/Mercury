@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from users import get_hash, verify_password
 engine=None
 import yaml
 with open("secret.yaml","r") as file:
@@ -13,18 +14,23 @@ def get_engine():
     password=config["password"]
     engine = create_engine(f"postgresql://{username}:{password}@localhost/database")
     return engine
+    
 import sqlalchemy
 app = FastAPI()
 from sqlalchemy import Table, MetaData, Column, Integer, String
 metadata=MetaData(get_engine())
+
 users=Table("users",
             metadata,
             Column("user_id",Integer,primary_key=True),
             Column("username",String,nullable=False))
+            Column("password_hash",String,nullable=False))
+users.drop(get_engine(),checkfirst=True)
 metadata.create_all(bind=get_engine())
+
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Connection successful."}
 
 @app.get("/users")
 def get_users():
@@ -37,8 +43,9 @@ def get_users():
     return usernames
 
 @app.post("/users")
-def register_user(username: str):
-    params={"username":username}
+def register_user(username: str, password: str):
+    _hash=get_hash(password)
+    params={"username":username,"password_hash":_hash}
     query=sqlalchemy.insert(users).values(**params)
     print(str(query))
     with get_engine().connect() as connection:
@@ -47,4 +54,3 @@ def register_user(username: str):
 @app.on_event("startup")
 async def startup():
     get_engine()
-    
