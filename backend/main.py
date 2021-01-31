@@ -29,7 +29,7 @@ users=Table("users",
             Column("username",String,nullable=False),
             Column("password_hash",String,nullable=False),
             Column("email",String,nullable=False))
-User.__table__.drop()
+users.__table__.drop()
 metadata.create_all(bind=get_engine())
 
 Mercury = Jinja2Templates(directory="frontend")
