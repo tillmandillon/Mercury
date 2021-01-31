@@ -33,10 +33,10 @@ users=Table("users",
 metadata.create_all(bind=get_engine())
 
 Mercury = Jinja2Templates(directory="frontend")
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 @app.get("/")
 async def root(request: Request):
-    return Mercury.TemplateResponse("index.html", {"request": request})
+    return Mercury.TemplateResponse("static/index.html", {"request": request})
 
 @app.get("/users")
 def get_users():
