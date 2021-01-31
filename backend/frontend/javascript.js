@@ -1,4 +1,4 @@
-function SignUp(usernameID, passwordID, emailID) {
+function register_user(usernameID, passwordID, emailID) {
 		var formData = new FormData();
 		formData.append('username', document.getElementById(usernameID).value);
 		formData.append('password', document.getElementById(passwordID).value);
